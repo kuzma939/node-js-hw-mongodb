@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
-;
 import dotenv from 'dotenv';
 import { getAllContacts, getContactsById } from './services/contacts.js';
 import { ObjectId } from 'mongodb';
