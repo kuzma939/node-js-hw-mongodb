@@ -29,3 +29,14 @@ export const getAllContacts = async () => {
     throw new Error('Failed to fetch contacts'); 
   }
 };
+export const createContacts = async (payload) => {
+  const contact = await ContactsCollection.create(payload);
+  return contact;
+};
+export const deleteContacts = async (contactsId) => {
+  const contact = await ContactsCollection.findOneAndDelete({
+    _id: contactsId,
+  });
+
+  return contact;
+}
