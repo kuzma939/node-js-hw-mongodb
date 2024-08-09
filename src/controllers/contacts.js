@@ -1,4 +1,9 @@
-import { getAllContacts, getContactsById, createContacts, deleteContacts ,updateContact} from "../services/contacts";
+import { getAllContacts, 
+getContactsById,
+ createContacts, 
+ deleteContacts,
+ updateContact } from '../services/contacts.js'
+
 
 export const getContactsAllController = async (reg, res, next) => {
     try {
@@ -14,7 +19,7 @@ export const getContactsAllController = async (reg, res, next) => {
 };
 // eslint-disable-next-line no-unused-vars
 export const getContactsByIdController = async (reg, res) => {
-  const contact = await getContactByID(contactsId);
+  const contact = await getContactsById(contactsId);
     const { contactsId } = req.params;
     if (!contact) {
         throw createHttpError(404, 'Contact no found');

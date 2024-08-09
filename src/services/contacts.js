@@ -40,3 +40,21 @@ export const deleteContacts = async (contactsId) => {
 
   return contact;
 }
+export const updateContact = async (contactsId, payload, options = {}) => {
+  const opaResult = await ContactCollection.findOneAndUpdate(
+    { _id: contactsId },
+    payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
+  );
+  if (!opaResult || !opaResult.value) return null;
+
+  return {
+    contact: opaResult.value,
+    isNew: Boolean(opaResult?.lastErrorObject?.upserted),
+  };
+};
+
