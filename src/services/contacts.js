@@ -1,19 +1,19 @@
 import { ContactsCollection } from '../db/models/contacts.js';
 import mongoose from 'mongoose'; 
 
-export const getContactsById = async (contactId) => {
-  if (!mongoose.Types.ObjectId.isValid(contactId)) {
+export const getContactsById = async (contactsId) => {
+  if (!mongoose.Types.ObjectId.isValid(contactsId)) {
     throw new Error('Invalid contact ID format');
   }
   try {
     // Використовуємо findById для Mongoose
-    const contact = await ContactsCollection.findById(contactId);
+    const contact = await ContactsCollection.findById(contactsId);
     if (!contact) {
       throw new Error('Contact not found');
     }
     return contact;
   } catch (error) {
-    console.error(`Error fetching contact with id ${contactId}: ${error.message}`);
+    console.error(`Error fetching contact with id ${contactsId}: ${error.message}`);
     throw new Error('Failed to fetch contact');
   }
 };
