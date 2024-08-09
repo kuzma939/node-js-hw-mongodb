@@ -1,5 +1,5 @@
-import { getAllContacts, getContactsById } from "../services/contacts";
-import { ObjectId } from 'mongodb';
+import { getAllContacts, getContactsById, createContacts, deleteContacts ,updateContact} from "../services/contacts";
+
 export const getContactsAllController = async (reg, res, next) => {
     try {
         const contacts = await getAllContacts();
@@ -14,13 +14,14 @@ export const getContactsAllController = async (reg, res, next) => {
 };
 // eslint-disable-next-line no-unused-vars
 export const getContactsByIdController = async (reg, res) => {
-    const { id } = req.params;
+  const contact = await getContactByID(contactsId);
+    const { contactsId } = req.params;
     if (!contact) {
         throw createHttpError(404, 'Contact no found');
       }
       res.json({
         status: 200,
-        message: `Successfully found contact with id ${contactId}!`,
+        message: `Successfully found contact with id ${contactsId}!`,
         data: contact,
       });
     };
@@ -49,7 +50,7 @@ export const createContactsController = async (req, res) => {
   export const deleteContactsIdController = async (req, res, next) => {
     const { contactsId } = req.params;
   
-    const contact = await deleteStudent(contactsId);
+    const contact = await deleteContacts(contactsId);
   
     if (!contact) {
       next(createHttpError(404, 'Student not found'));
