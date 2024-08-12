@@ -6,7 +6,7 @@ import contactsRouter from './routers/contacts.js'
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
  
 const setupServer = () => {
   const app = express();
