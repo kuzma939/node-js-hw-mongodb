@@ -4,8 +4,8 @@ getContactsByIdController,
 getContactsAllController,
 createContactsController, 
 deleteContactsIdController,
-patchContactController} from "../controllers/contacts";
-import { ctrlWrapper } from "../utils/ctrlWrapper";
+patchContactController} from "../controllers/contacts.js";
+import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 const router = Router();
 router.get('/contacts', ctrlWrapper(getContactsAllController));
 router.get('/contacts/:id', ctrlWrapper(getContactsByIdController));
